@@ -13,8 +13,6 @@
 		<!-- Title -->
 		<title> @yield('title', 'Virtual Technopark') </title>
 
-		<!--- Favicon --->
-		<link rel="icon" href="{{ asset('virtual/assets/img/fav.png') }}" type="image/x-icon"/>
 
 		<!-- Bootstrap css -->
 		<link href="{{ asset('virtual/assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet" id="style"/>
@@ -131,102 +129,40 @@
 		<script src="{{ asset('assets/js/sweet-alert.js') }}"></script>
 
 		<script>
-			// $.ajaxSetup({
-			// 	headers: {
-			// 		'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-			// 	}
-			// });
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+				}
+			});
 			
-			// $(document).ready(function () {
-			// 	$(document).on('click', '.modal-effect', function (e) { 
-			// 		e.preventDefault();
-			// 		var effect = $(this).attr('data-bs-effect');
-			// 		$('#modal_form').addClass(effect);
-			// 	});
-			// 	// hide modal with effect
-			// 	$(document).on('hidden.bs.modal', '#modal_form', function (e) {
-			// 		$(this).removeClass(function (index, className) {
-			// 			return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
-			// 		});
-			// 	});
-			// });
+			$(document).ready(function () {
+				$(document).on('click', '.modal-effect', function (e) { 
+					e.preventDefault();
+					var effect = $(this).attr('data-bs-effect');
+					$('#modal_form').addClass(effect);
+				});
+				// hide modal with effect
+				$(document).on('hidden.bs.modal', '#modal_form', function (e) {
+					$(this).removeClass(function (index, className) {
+						return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
+					});
+				});
+			});
 
-			// function ajaxSelect2Initiator(elm, modal, url){
-			// 	return $('#'+elm).select2({
-			// 		width: '100%',
-			// 		dropdownParent: modal ? $(this).parent() : '',
-			// 		ajax: {
-			// 			url: url,
-			// 			dataType: 'json',
-			// 			type: "GET",
-			// 			delay: 500,
-			// 			quietMillis: 500,
-			// 			data: function (term) {
-			// 			searchData = term.term;
-			// 				return {
-			// 					term: term
-			// 				};
-			// 			},
-			// 			processResults: function (response) {
-			// 				return {
-			// 					results: $.map(response, function (item) {
-			// 						return {
-			// 							text: item.name,
-			// 							id: item.id
-			// 						}
-			// 					})
-			// 				};
-			// 			}
-			// 		}
-			// 	});
-			// }
 
-			// let type = false;
-			// if ('{{session()->has("success")}}' == true) type = 'success';
-			// if ('{{session()->has("error")}}' == true) type = 'error';
+			let type = false;
+			if ('{{session()->has("success")}}' == true) type = 'success';
+			if ('{{session()->has("error")}}' == true) type = 'error';
 
-			// if (type) {
-			// 	Swal.fire({
-			// 		title: type == 'success' ? "Success !" : 'Error !',
-			// 		html: type == 'success' ? "{{ session()->get('success') }}" : "{!! session()->get('error') !!}",
-			// 		icon: `${type}`,
-			// 		confirmButtonColor: "#556ee6",
-			// 	})
-			// }
+			if (type) {
+				Swal.fire({
+					title: type == 'success' ? "Success !" : 'Error !',
+					html: type == 'success' ? "{{ session()->get('success') }}" : "{!! session()->get('error') !!}",
+					icon: `${type}`,
+					confirmButtonColor: "#556ee6",
+				})
+			}
 
-			// function toast(message){
-			// 	Swal.fire({
-            //             toast: true,
-            //             position: 'top-end',
-            //             icon: 'error',
-            //             title: 'ERROR !',
-            //             text: message,
-            //             showConfirmButton: false,
-            //             timer: 2000
-            //         });
-			// }
-
-			// $(document).ready(function(){
-			// 	var url =  `{{ route('event.upcoming-event') }}`;
-
-			// 	$.get(url, function(response){
-			// 		data = response.data;
-			// 		data.map(function(item){
-			// 			$('#upcomingEvent').append(`<div class="Day">${moment(item.start_datetime).format('MMM DD, YYYY')}</div>
-			// 				<div class="tasks">
-			// 					<div class=" task-line info">
-			// 						<a href="javascript:void(0);" class="label">
-			// 							${item.title}
-			// 						</a>
-			// 						<div class="time">
-			// 							${moment(item.start_datetime).format('hh:mm A')}
-			// 						</div>
-			// 					</div>
-			// 				</div>`
-			// 			)
-			// 		});
-			// 	})
-			// })
 
 		</script>
 		
