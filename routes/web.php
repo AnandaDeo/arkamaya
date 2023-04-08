@@ -16,10 +16,6 @@ use App\Http\Controllers\ProjectController;
 |
 */
 
-Route::get('/', function () {
-    $client = Client::get();
-    return view('contents.project', compact('client'));
-});
 
 Route::get('/project-datatable', [ProjectController::class, 'datatable'])->name('project-datatable');
 Route::post('/delete-selected', [ProjectController::class, 'deleteSelected'])->name('delete-selected');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Project;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -15,7 +16,8 @@ class ProjectController extends Controller
     public function index()
     {
         $client = Client::get();
-        return view('contents.project', compact('client'));
+        $project = Project::get();
+        return view('contents.project', compact('client','project'));
     }
 
     /**
@@ -100,9 +102,34 @@ class ProjectController extends Controller
         //
     }
 
-    public function datatable(){
-        $data = Project::with('client')->get();
-        return DataTables::of($data)->make();
+    public function datatable(Request $request){
+        $data = Project::query()->with('client');
+        return datatables()->eloquent($data)
+            ->editColumn('project_start_date', function($model){
+                return $model->project_start_date->translatedFormat('d M Y');
+            })
+            ->editColumn('project_end_date', function($model){
+                $date = Carbon::parse($model->project_end_date);
+                return $model->project_end_date->translatedFormat('d M Y');
+            })
+            ->filter(function ($instance) use ($request) {
+
+                if ($request->get('project_name')) {
+
+                    $instance->where('project_name', 'LIKE', '%' . $request->project_name . '%');
+                }
+
+                if ($request->get('client_id')) {
+
+                    $instance->where('client_id', $request->client_id);
+                }
+
+                if ($request->get('status')) {
+
+                    $instance->where('project_status', $request->status);
+                }
+            })
+            ->make();
     }
 
     public function deleteSelected(Request $request){
