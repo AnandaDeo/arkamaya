@@ -11,11 +11,11 @@
                 <div class="app-sidebar__user">
                     <div class="dropdown user-pro-body text-center">
                         <div class="user-pic">
-                            <img src="virtual/assets/img/faces/6.png" alt="user-img" class="rounded-circle mCS_img_loaded">
+                            {{-- <img src="virtual/assets/img/faces/6.png" alt="user-img" class="rounded-circle mCS_img_loaded"> --}}
                         </div>
                         <div class="user-info">
-                            <h6 class=" mb-0 text-dark">Username</h6>
-                            <span class="text-muted app-sidebar__user-name text-sm">Role</span>
+                            <h6 class=" mb-0 text-dark">Deo Ananda Rizky</h6>
+                          
                         </div>
                     </div>
                 </div>
