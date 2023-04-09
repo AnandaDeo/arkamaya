@@ -375,12 +375,12 @@
                 $('.modal-title').text('Edit Data Event Category');
 
                 $('#project_name').val(response.project_name);
-                $('#project_start_date').val(response.project_start_date);
-                $('#project_end_date').val(response.project_end_date);
+                $('#project_start_date').val(moment(response.project_start_date).format('YYYY-MM-DD'));
+                $('#project_end_date').val(moment(response.project_end_date).format('YYYY-MM-DD'));
                 $('#project_status').val(response.project_status).change();
                 $('#client_id').val(response.client_id).change();
-            });
-        }
+            });
+        }
 
 
 
