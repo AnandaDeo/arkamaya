@@ -1,6 +1,6 @@
 - Clone atau Download zip project
 - Jalankan perintah composer install pada terminal
-- Pada file .env set variabel DB_DATABASE seperti berikut DB_DATABASE=db_project_fatwah
+- Pada file .env set variabel DB_DATABASE seperti berikut DB_DATABASE=db_project_deo
 - Buat database baru dengan nama db_project_fatwah(untuk nama bebas tinggal samakan saja dengan yang ada di file .env)
 - Kemudian jalankan perinta php artisan migrate --seed
 - Lalu jalankan project pada server dengan perintah php artisan serve
